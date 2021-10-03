@@ -16,20 +16,20 @@ enum Trit
 using namespace std;
 
 int bit(uint b, uint bitNumber){
-    return (b & (1 << bitNumber));
+    return (b & (1 << bitNumber))>>bitNumber;
 }
 
 int gtrit(uint b, uint bitNumber){
     if (bit(b, bitNumber) == 1){
-        return False;
+        return True;
     }
-    else if (bit(b, bitNumber + 1) == 0)
+    else if (bit(b, bitNumber + 1) == 1)
     {
-        return Unknown;
+        return False;
     }
     else
     {
-        return True;
+        return Unknown;
     }
 }
 
@@ -123,13 +123,11 @@ public:
             if ((ftrit == False) || (strit == False)){
                 temp[i] = False;
             }
+            else if (ftrit == Unknown || strit == Unknown){
+                temp[i] = Unknown;
+            }
             else{
-                if (ftrit == Unknown || strit == Unknown){
-                    temp[i] = Unknown;
-                }
-                else{
-                    temp[i] = True;
-                }
+                temp[i] = True;
             }
         }
         return temp;
