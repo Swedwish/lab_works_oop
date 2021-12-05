@@ -2,8 +2,8 @@
 #define LAB2_REPLACE_H
 #include "Worker.h"
 
-class Replace:Worker {
-
+class Replace:public Worker {
+    Replace(const string& word1, const string& word2);
     bool exec(vector<string> *input, vector<string> *output) override;
 };
 

@@ -10,5 +10,6 @@ bool grep::exec(vector<string> *input, vector<string> *output) {
             output->push_back(i);
         }
     }
+    return true;
 }
 
