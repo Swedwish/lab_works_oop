@@ -1,6 +1,9 @@
 #include <iostream>
-#include "Worker.h"
+#include "ReadFile.cpp"
+#include "WriteFile.cpp"
+#include "Sort.cpp"
+#include "grep.cpp"
 int main() {
-    std::cout << "Hello, World!ddddddd" << std::endl;
+    std::cout << "Hello, World!" << std::endl;
     return 0;
 }
