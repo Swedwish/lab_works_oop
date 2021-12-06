@@ -155,6 +155,7 @@ TritSet& TritSet::operator=(const TritSet& tritBan) {
         data[0] = 0;
         return *this;
     }
+    uint* old_data = data;
     data = new uint[tritBan.length * 2 / (8 * sizeof(uint))];
     int temp = tritBan.length * 2 % 8 * sizeof(uint) == 0 ? 0 : 1;
     for (uint i = 0; i < (length * 2 / (8 * sizeof(uint)) + temp); i++) {
@@ -165,6 +166,7 @@ TritSet& TritSet::operator=(const TritSet& tritBan) {
         this->data[i] = tritBan.data[i];
     }
     this->length = tritBan.length;
+    delete[] old_data;
     return *this;
 }
 
