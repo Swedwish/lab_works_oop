@@ -1,10 +1,10 @@
-#include "grep.h"
+#include "Grep.h"
 
-grep::grep(string word) {
+Grep::Grep(string word) {
     args.push_back(word);
 }
 
-bool grep::exec(vector<string> *input, vector<string> *output) {
+bool Grep::exec(vector<string> *input, vector<string> *output) {
     for (auto &i : *input){
         if(i.find(args[0])!=string::npos){
             output->push_back(i);

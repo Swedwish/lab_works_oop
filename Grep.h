@@ -2,9 +2,9 @@
 #define LAB2_GREP_H
 #include "Worker.h"
 
-class grep: public Worker{
+class Grep: public Worker{
 public:
-    grep(string word);
+    Grep(string word);
     bool exec(vector<string> *input, vector<string> *output) override;
 };
 
