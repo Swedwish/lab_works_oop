@@ -1,7 +1,6 @@
 #include "ReadFile.h"
 
 bool ReadFile::exec(vector<string> *input, vector<string> *output) {
-    //TODO: Обработать случай, если есть инпут.
     string line;
     ifstream stream(args[0]);
     while (getline(stream,line)){

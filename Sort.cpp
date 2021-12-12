@@ -5,8 +5,8 @@ bool cmp(const string& a,const string& b){
 }
 
 bool Sort::exec(vector<string> *input, vector<string> *output) {
-    std::sort(input->begin(), input->end(), cmp);
+    sort((*output).begin(), (*output).end(), greater<>());
     output->clear();
-    output = input;
+    *output = *input;
     return true;
 }

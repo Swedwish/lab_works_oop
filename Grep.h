@@ -4,6 +4,7 @@
 
 class Grep: public Worker{
 public:
+    vector <string> args;
     Grep(string word);
     bool exec(vector<string> *input, vector<string> *output) override;
 };

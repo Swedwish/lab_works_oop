@@ -5,6 +5,7 @@
 
 class ReadFile:public Worker {
 public:
+    vector <string> args;
     ReadFile(string in);
     bool exec(vector<string> *input, vector<string> *output) override;
 };

@@ -4,6 +4,7 @@
 
 class Replace:public Worker {
 public:
+    vector <string> args;
     Replace(const string& word1, const string& word2);
     bool exec(vector<string> *input, vector<string> *output) override;
 };

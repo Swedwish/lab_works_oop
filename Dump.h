@@ -4,6 +4,7 @@
 
 class Dump: public Worker {
 public:
+    vector <string> args;
     Dump(string filename);
     bool exec(vector<string> *input, vector<string> *output) override;
 };

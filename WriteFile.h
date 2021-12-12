@@ -4,6 +4,7 @@
 
 class WriteFile: public Worker{
 public:
+    vector <string> args;
     WriteFile(string out);
     bool exec(vector<string> *input, vector<string> *output) override;
 };
