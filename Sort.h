@@ -4,7 +4,9 @@
 #include <algorithm>
 
 class Sort: public Worker{
+private:
     vector <string> args;
+public:
     bool exec(vector<string> *input, vector<string> *output) override;
 };
 
