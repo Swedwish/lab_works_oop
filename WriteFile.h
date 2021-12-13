@@ -3,8 +3,9 @@
 #include "Worker.h"
 
 class WriteFile: public Worker{
-public:
+private:
     vector <string> args;
+public:
     WriteFile(string out);
     bool exec(vector<string> *input, vector<string> *output) override;
 };
