@@ -3,8 +3,9 @@
 #include "Worker.h"
 
 class Dump: public Worker {
-public:
+    private:
     vector <string> args;
+public:
     Dump(string filename);
     bool exec(vector<string> *input, vector<string> *output) override;
 };
