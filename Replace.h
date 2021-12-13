@@ -3,8 +3,9 @@
 #include "Worker.h"
 
 class Replace:public Worker {
-public:
+private:
     vector <string> args;
+public:
     Replace(const string& word1, const string& word2);
     bool exec(vector<string> *input, vector<string> *output) override;
 };
