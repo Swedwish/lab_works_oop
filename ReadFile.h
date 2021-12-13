@@ -4,8 +4,9 @@
 #include <fstream>
 
 class ReadFile:public Worker {
-public:
+private:
     vector <string> args;
+public:
     ReadFile(string in);
     bool exec(vector<string> *input, vector<string> *output) override;
 };
