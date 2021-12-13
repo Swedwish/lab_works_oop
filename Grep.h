@@ -3,8 +3,9 @@
 #include "Worker.h"
 
 class Grep: public Worker{
-public:
+    private:
     vector <string> args;
+public:
     Grep(string word);
     bool exec(vector<string> *input, vector<string> *output) override;
 };
