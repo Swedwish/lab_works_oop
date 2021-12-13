@@ -9,8 +9,8 @@ using namespace std;
 class Validator
 {
 public:
-    static bool file_Exists(const string& file);
-    static void badFile(const string& message);
+    bool file_Exists(const string& file);
+    void badFile(const string& message);
 };
 
 #endif //LAB2_VALIDATOR_H
