@@ -32,6 +32,6 @@ public:
 };
 
 int main(){
-    tuple<int, string,string,string> t = {3, "Hello","I am gay", "Roma is gay 2"};
+    tuple<int, string,string,string> t = {3, "Hello","World", "!!!"};
     cout<<t<<endl;
 }
