@@ -5,22 +5,24 @@
 #include <iosfwd>
 #include <vector>
 #include <fstream>
+#include "CSVparser.cpp"
 
 using namespace std;
 #include "print_tuple.h"
-#include "CSVparser.h"
 
 int main(){
-    std::ifstream f("test.csv");
-    CSVParser::CSVParser<std::string, int, float> parser(f, 0);
-    std::cout << "Started reading" << std::endl;
-    try {
-        for (const auto& entry: parser) {
-            cout << entry << std::endl;
-        }
-    } catch (CSVParser::ParsingException& e) {
-        std::cout << e.what() << "; line: " << e.get_line_idx() << " char: " << e.get_char_idx() << std::endl;
+//    tuple<int, string, string> a = {3,"hello", "world"};
+//    cout<<a;
+//    string b = "hello";
+//    auto c = make_tuple(b);
+//    tuple<int> d = {3};
+//    tuple<string,int> e = tuple_cat(c,d);
+//    cout<<endl<<e;
+
+    ifstream file("test.csv");
+    CSVparser<string, string,int > parser(file, 0 /*skip first lines count*/);
+    for (tuple<string,string,int> rs : parser){
+        cout<<rs<<endl;
     }
-    std::cout << "Read all" << std::endl;
-    return 0;
+
 }
