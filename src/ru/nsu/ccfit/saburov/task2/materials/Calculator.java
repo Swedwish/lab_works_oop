@@ -26,7 +26,7 @@ public class Calculator {
             pps.load(Factory.class.getResourceAsStream(config));
             String word;
             Operation worker;
-            while (!(word = Utility.readWord(reader)).equals("")) {
+            while (!(word = Factory.readWord(reader)).equals("")) {
                 context.args.clear();
                 worker = Factory.make_class(word,pps,context,reader);
                 if (worker == null){
