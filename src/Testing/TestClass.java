@@ -12,19 +12,19 @@ import java.util.Vector;
 class TestClass {
 
     void pop(Context context) {
-        (new POP()).makeOperation(context);
+        (new Pop()).makeOperation(context);
     }
 
     void push(Context context) {
-        (new PUSH()).makeOperation(context);
+        (new Push()).makeOperation(context);
     }
 
     void define(Context context) {
-        (new DEFINE()).makeOperation(context);
+        (new Define()).makeOperation(context);
     }
 
     void sqrt(Context context) {
-        (new SQRT()).makeOperation(context);
+        (new Sqrt()).makeOperation(context);
     }
 
     void math(Context context) {
@@ -37,19 +37,19 @@ class TestClass {
 
         context.argsAdd("3.0");
         push(context);
-        assertEquals(context.DataPeek(), 3.0);
+        assertEquals(context.dataPeek(), 3.0);
         context.argsClear();
 
         context.argsAdd("5");
         push(context);
-        assertEquals(context.DataPeek(), 5.0);
+        assertEquals(context.dataPeek(), 5.0);
         context.argsClear();
 
         pop(context);
-        assertEquals(context.DataPeek(), 3.0);
+        assertEquals(context.dataPeek(), 3.0);
 
         pop(context);
-        assertTrue(context.DataEmpty());
+        assertTrue(context.dataEmpty());
     }
 
     @Test
@@ -61,30 +61,30 @@ class TestClass {
         define(context);
         context.argsRemove(1);
         push(context);
-        assertEquals(context.DataPeek(), 4.0);
+        assertEquals(context.dataPeek(), 4.0);
         context.argsClear();
-        context.DataClear();
+        context.dataClear();
 
         context.argsAdd("5.0");
         context.argsAdd("4");
         define(context);
         context.argsRemove(1);
         push(context);
-        assertEquals(context.DataPeek(), 4.0);
+        assertEquals(context.dataPeek(), 4.0);
         context.argsClear();
-        context.DataClear();
+        context.dataClear();
 
         context.argsAdd("+5");
         push(context);
-        assertEquals(context.DataPeek(), 5.0);
+        assertEquals(context.dataPeek(), 5.0);
         context.argsClear();
-        context.DataClear();
+        context.dataClear();
 
         context.argsAdd("-5");
         push(context);
-        assertEquals(context.DataPeek(), -5.0);
+        assertEquals(context.dataPeek(), -5.0);
         context.argsClear();
-        context.DataClear();
+        context.dataClear();
     }
 
     @Test
@@ -97,7 +97,7 @@ class TestClass {
         push(context);
         context.argsSet(0,"+");
         math(context);
-        assertEquals(context.DataPeek(),30);
+        assertEquals(context.dataPeek(),30);
         context.argsClear();
 
         context.argsAdd("25");
@@ -106,7 +106,7 @@ class TestClass {
         push(context);
         context.argsSet(0,"-");
         math(context);
-        assertEquals(context.DataPeek(),20);
+        assertEquals(context.dataPeek(),20);
         context.argsClear();
         
         context.argsAdd("25");
@@ -115,7 +115,7 @@ class TestClass {
         push(context);
         context.argsSet(0,"/");
         math(context);
-        assertEquals(context.DataPeek(),5);
+        assertEquals(context.dataPeek(),5);
         context.argsClear();
 
         context.argsAdd("25");
@@ -124,13 +124,13 @@ class TestClass {
         push(context);
         context.argsSet(0,"*");
         math(context);
-        assertEquals(context.DataPeek(),125);
+        assertEquals(context.dataPeek(),125);
         context.argsClear();
 
         context.argsAdd("25");
         push(context);
         context.argsClear();
         sqrt(context);
-        assertEquals(context.DataPeek(),5);
+        assertEquals(context.dataPeek(),5);
     }
 }

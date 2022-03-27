@@ -3,9 +3,9 @@ package ru.nsu.ccfit.saburov.task2.materials;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
-public class PRINT implements Operation{
+public class Print implements Operation{
 
-    public PRINT() {
+    public Print() {
     }
 
     @Override

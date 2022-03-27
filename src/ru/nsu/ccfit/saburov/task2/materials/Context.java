@@ -22,10 +22,10 @@ public class Context {
     public void argsClear(){
         args.clear();
     }
-    public boolean DataEmpty(){
+    public boolean dataEmpty(){
         return Data.empty();
     }
-    public Double DataPeek()
+    public Double dataPeek()
     {
         return Data.peek();
     }
@@ -33,8 +33,8 @@ public class Context {
         args.remove(index);
     }
 
-    public void DataClear() {
-        Data.clear();;
+    public void dataClear() {
+        Data.clear();
     }
 
     public void argsSet(int i, String s) {

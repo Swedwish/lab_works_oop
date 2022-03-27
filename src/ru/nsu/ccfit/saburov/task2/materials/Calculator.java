@@ -20,7 +20,7 @@ public class Calculator {
     }
 
 
-    public void Calculate() {
+    public void calculate() {
         try {
             Properties pps = new Properties();
             pps.load(Factory.class.getResourceAsStream(config));
@@ -28,7 +28,7 @@ public class Calculator {
             Operation worker;
             while (!(word = Factory.readWord(reader)).equals("")) {
                 context.args.clear();
-                worker = Factory.make_class(word,pps,context,reader);
+                worker = Factory.makeClass(word,pps,context,reader);
                 if (worker == null){
                     continue;
                 }

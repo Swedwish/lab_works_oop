@@ -1,9 +1,6 @@
 package ru.nsu.ccfit.saburov.task2.materials;
 
-import org.apache.log4j.Logger;
-
 import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Factory {
@@ -32,7 +29,6 @@ public class Factory {
                 }
             }
             if (c == '\r') {
-                //noinspection ResultOfMethodCallIgnored
                 i.read();
             }
             return s.toString();
@@ -45,7 +41,7 @@ public class Factory {
         }
     }
 
-    public static Operation make_class(String word, Properties pps, Context context, InputStreamReader reader) {
+    public static Operation makeClass(String word, Properties pps, Context context, InputStreamReader reader) {
         try {
             if (word.equals("DEFINE")){
                 context.args.add(readWord(reader));

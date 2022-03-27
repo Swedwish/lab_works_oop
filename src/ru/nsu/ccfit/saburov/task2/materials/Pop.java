@@ -1,7 +1,7 @@
 package ru.nsu.ccfit.saburov.task2.materials;
 
-public class POP implements Operation {
-    public POP(){}
+public class Pop implements Operation {
+    public Pop(){}
 
     @Override
     public void makeOperation(Context context) {
