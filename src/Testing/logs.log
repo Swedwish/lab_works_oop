@@ -1,0 +1,44 @@
+2022-03-16 17:50:46 INFO  Main:10 - Hello
+2022-03-16 17:51:24 INFO  Main:10 - Hello
+2022-03-16 18:01:08 INFO  Main:11 - Program start.
+2022-03-16 18:02:03 INFO  Main:11 - Program start.
+2022-03-16 18:02:22 INFO  Main:11 - Program start.
+2022-03-16 18:03:52 INFO  Main:11 - Program start.
+2022-03-16 18:04:23 INFO  Main:11 - Program start.
+2022-03-16 18:04:26 INFO  Factory:63 - Program end.
+2022-03-16 18:07:34 INFO  Main:11 - Program start.
+2022-03-16 18:07:40 INFO  Factory:46 - Trying to DEFINE with args "a" and "3"
+2022-03-16 18:07:42 INFO  Factory:63 - Program end.
+2022-03-16 18:11:30 INFO  Main:11 - Program start.
+2022-03-16 18:11:33 INFO  Factory:43 - Trying to PUSH with arg "4".
+2022-03-16 18:11:40 INFO  Factory:43 - Trying to PUSH with arg "5".
+2022-03-16 18:11:42 INFO  Factory:53 - Trying to make *.
+2022-03-16 18:11:49 INFO  Factory:43 - Trying to PUSH with arg "2.5".
+2022-03-16 18:11:51 INFO  Factory:53 - Trying to make *.
+2022-03-16 18:11:54 INFO  Factory:58 - Trying to PRINT.
+2022-03-16 18:12:01 INFO  Factory:67 - QUIT or EXIT reached. Program end.
+2022-03-16 18:12:55 INFO  Main:11 - Program start.
+2022-03-16 18:12:56 INFO  Factory:43 - Trying to PUSH with arg "4".
+2022-03-16 18:12:56 INFO  Factory:64 - Trying to SQRT.
+2022-03-16 18:12:56 INFO  Factory:43 - Trying to PUSH with arg "5".
+2022-03-16 18:12:56 INFO  Factory:53 - Trying to make *.
+2022-03-16 18:12:56 INFO  Factory:43 - Trying to PUSH with arg "2.5".
+2022-03-16 18:12:56 INFO  Factory:53 - Trying to make *.
+2022-03-16 18:12:56 INFO  Factory:64 - Trying to SQRT.
+2022-03-16 18:13:00 INFO  Factory:58 - Trying to PRINT.
+2022-03-16 18:13:03 INFO  Factory:68 - QUIT or EXIT reached. Program end.
+2022-03-21 06:40:10 INFO  Main:11 - Program start.
+2022-03-21 06:40:20 INFO  Factory:41 - Trying to PUSH with arg "4".
+2022-03-21 06:40:22 INFO  Factory:56 - Trying to PRINT.
+2022-03-21 06:40:25 INFO  Factory:62 - Trying to SQRT.
+2022-03-21 06:40:32 INFO  Factory:56 - Trying to PRINT.
+2022-03-21 06:40:35 INFO  Factory:36 - Trying to POP.
+2022-03-21 06:40:36 INFO  Factory:56 - Trying to PRINT.
+2022-03-21 06:40:37 INFO  Factory:66 - QUIT or EXIT reached. Program end.
+2022-03-27 16:11:28 INFO  Main:11 - Program start.
+2022-03-27 16:11:32 INFO  Calculator:33 - Executing POP...
+2022-03-27 16:11:35 INFO  Calculator:33 - Executing PUSH...
+2022-03-27 16:11:38 INFO  Calculator:33 - Executing DEFINE...
+2022-03-27 16:11:41 INFO  Calculator:33 - Executing PUSH...
+2022-03-27 16:11:42 INFO  Calculator:33 - Executing +...
+2022-03-27 16:11:44 INFO  Calculator:33 - Executing PRINT...
