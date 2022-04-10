@@ -1,10 +1,12 @@
 package ru.nsu.ccfit.saburov.task2.materials;
 
+import java.io.InputStreamReader;
+
 public class Pop implements Operation {
     public Pop(){}
 
     @Override
-    public void makeOperation(Context context) {
+    public void makeOperation(Context context, InputStreamReader reader) {
         if (!context.Data.empty()){
             context.Data.pop();
         }

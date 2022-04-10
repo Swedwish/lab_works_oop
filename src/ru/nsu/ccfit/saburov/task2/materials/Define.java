@@ -1,9 +1,11 @@
 package ru.nsu.ccfit.saburov.task2.materials;
 
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Vector;
 
 import static java.lang.Character.isDigit;
+import static ru.nsu.ccfit.saburov.task2.materials.Factory.readWord;
 
 public class Define implements Operation{
 
@@ -28,7 +30,9 @@ public class Define implements Operation{
     }
 
     @Override
-    public void makeOperation(Context context) {
+    public void makeOperation(Context context, InputStreamReader reader) {
+        context.args.add(readWord(reader));
+        context.args.add(readWord(reader));
         double a = getValue(context.args,context.definitions);
         if (!Double.isNaN(a))
             context.definitions.put(context.args.get(0),a);

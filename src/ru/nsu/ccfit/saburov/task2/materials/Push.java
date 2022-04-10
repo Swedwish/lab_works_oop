@@ -1,9 +1,11 @@
 package ru.nsu.ccfit.saburov.task2.materials;
 
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Vector;
 
 import static java.lang.Character.isDigit;
+import static ru.nsu.ccfit.saburov.task2.materials.Factory.readWord;
 
 public class Push implements Operation {
     public Push(){}
@@ -25,7 +27,8 @@ public class Push implements Operation {
         return Double.parseDouble(args.get(0));
     }
     @Override
-    public void makeOperation(Context context) {
+    public void makeOperation(Context context, InputStreamReader reader) {
+        context.args.add(readWord(reader));
         double a = getValue(context.args,context.definitions);
         if (!Double.isNaN(a))
             context.Data.push(a);

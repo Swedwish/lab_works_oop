@@ -7,32 +7,7 @@ public class Factory {
 
     static public String readWord(InputStreamReader i) {
         try {
-            int c = i.read();
-            while(c == ' ' || c == '\r' || c=='\n'){
-                c = i.read();
-            }
-
-            if (c == '#') {
-                while (c != '\n' && c != -1) {
-                    c = i.read();
-                }
-                return "#";
-            }
-            StringBuilder s = new StringBuilder();
-            while (c != ' ' && c != '\n' && c != '\r' && c != -1 && c != '#') {
-                s.append((char) c);
-                c = i.read();
-            }
-            if (c == '#') {
-                while (c != '\n' && c != -1) {
-                    c = i.read();
-                }
-            }
-            if (c == '\r') {
-                i.read();
-            }
-            return s.toString();
-
+            return new Scanner(i).next();
         }
         catch(Exception e){
             System.out.println("IOException." + e);
@@ -41,23 +16,15 @@ public class Factory {
         }
     }
 
-    public static Operation makeClass(String word, Properties pps, Context context, InputStreamReader reader) {
+    public Operation makeClass(String word) {
         try {
-            if (word.equals("DEFINE")){
-                context.args.add(readWord(reader));
-                context.args.add(readWord(reader));
-            }
-            else if(word.equals("PUSH")){
-                context.args.add(readWord(reader));
-            }
-            else if(word.equals("+") || word.equals("-") || word.equals("*") || word.equals("/")){
-                context.args.add(word);
-            }
-            else if(word.equals("EXIT") || word.equals("QUIT")){
-                System.exit(5);
-            }
+            Properties pps = new Properties();
+            pps.load(Factory.class.getResourceAsStream("prop.properties"));
             if(pps.containsKey(word)) {
                 return (Operation) Class.forName(pps.getProperty(word)).getDeclaredConstructor().newInstance();
+            }
+            else if(pps.containsKey(String.valueOf(word.charAt(0)))){
+                return (Operation) Class.forName(pps.getProperty(String.valueOf(word.charAt(0)))).getDeclaredConstructor().newInstance();
             }
             else{
                 System.out.println("Can't recognise word \"" + word + "\".\n");

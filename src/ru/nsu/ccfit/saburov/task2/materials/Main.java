@@ -13,7 +13,7 @@ public class Main {
             if (args.length!=0) {
                 reader = new InputStreamReader(new FileInputStream(args[0]));
             } else reader = new InputStreamReader(System.in);
-            var Calculator = new Calculator(reader, "prop.properties");
+            var Calculator = new Calculator(reader);
             Calculator.calculate();
             logger.info("Program end.");
         }
