@@ -63,6 +63,7 @@ class MineField {
                         field[coordinates.getFirst()][coordinates.getSecond()]++;
                     }
                 } catch (ArrayIndexOutOfBoundsException ignored) {
+
                 }
             }
         }
