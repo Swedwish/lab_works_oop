@@ -1,52 +1,27 @@
-package ru.nsu.ccfit.saburov;
+package ru.nsu.ccfit.saburov.model;
 
 import java.lang.*;
 import java.util.Vector;
 
-class PairInt {
-    int first;
-    int second;
-
-    PairInt(int first, int second) {
-        this.first = first;
-        this.second = second;
-    }
-
-    Boolean isEqual(PairInt Pair2) {
-        return this.first == Pair2.first && this.second == Pair2.second;
-    }
-
-    void setFirst(int value) {
-        first = value;
-    }
-
-    void setSecond(int value) {
-        second = value;
-    }
-
-    int getFirst() {
-        return first;
-    }
-
-    int getSecond() {
-        return second;
-    }
-}
-
-class MineField {
+public class MineField {
     int size;
-    int mineCount;
-    int [][] opened;
-    char[][] field;
+    public int mineCount;
+
+    public void setOpened(int x, int y, int value) {
+        this.opened[x][y] = value;
+    }
+
+    public int [][] opened;
+    public char[][] field;
     Vector<PairInt> mineLocationsList = new Vector<>();
 
-    MineField() {
+    public MineField() {
         this.size = 9;
         this.mineCount = 10;
         field = new char[size][size];
         opened = new int[size][size];
     }
-    MineField(int size, int mineCount) {
+    public MineField(int size, int mineCount) {
         this.size = size;
         this.mineCount = mineCount;
         field = new char[size][size];
@@ -54,7 +29,7 @@ class MineField {
     }
 
     void fillCell(PairInt coordinates) {
-        if (field[coordinates.getFirst()][coordinates.getSecond()] == '*') return;
+        if (field[coordinates.getFirst()][coordinates.getSecond()] == '*' || isOpened(new PairInt(coordinates.getFirst(),coordinates.getSecond())) == 2) return;
         field[coordinates.getFirst()][coordinates.getSecond()] = '0';
         for (int i = coordinates.getFirst() - 1; i <= coordinates.getFirst() + 1; i++) {
             for (int j = coordinates.getSecond() - 1; j <= coordinates.getSecond() + 1; j++) {
@@ -69,7 +44,7 @@ class MineField {
         }
     }
 
-    void fillField() {
+    public void fillField() {
         int count = 0;
         PairInt mineCoordinates;
         int flag;
@@ -105,7 +80,7 @@ class MineField {
         return size;
     }
 
-    public char getField(PairInt coordinates) {
+    public char getCell(PairInt coordinates) {
         return field[coordinates.getFirst()][coordinates.getSecond()];
     }
 

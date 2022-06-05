@@ -1,129 +1,120 @@
 package ru.nsu.ccfit.saburov;
 
-import java.util.Locale;
-import java.util.Objects;
+import ru.nsu.ccfit.saburov.model.MineField;
+import ru.nsu.ccfit.saburov.model.PairInt;
+import ru.nsu.ccfit.saburov.view.View;
+import ru.nsu.ccfit.saburov.view.gui.GuiView;
+import ru.nsu.ccfit.saburov.view.text.TextView;
+
 import java.util.Scanner;
 
 
 
 
 public class Controller {
+    View view;
+    MineField mineField;
     static void openNearby(MineField mineField, PairInt coordinates) {
         mineField.opened[coordinates.getFirst()][coordinates.getSecond()] = 1;
         for (int i = coordinates.getFirst() - 1; i <= coordinates.getFirst() + 1; i++) {
             for (int j = coordinates.getSecond() - 1; j <= coordinates.getSecond() + 1; j++) {
                 try {
-                    if (mineField.field[i][j] == '0' && mineField.opened[i][j] == 0) {
-                        openNearby(mineField, new PairInt(i, j));
+                    if(j == coordinates.getSecond() || i == coordinates.getFirst()) {
+                        if (mineField.field[i][j] == '0' && mineField.opened[i][j] == 0) {
+                            openNearby(mineField, new PairInt(i, j));
+                        }
+                        mineField.opened[i][j] = 1;
                     }
-                    mineField.opened[i][j] = 1;
                 } catch (ArrayIndexOutOfBoundsException ignored) {
                 }
             }
         }
     }
 
-    static void menu(){
-        View.printMenu();
+    /*void menu(){
+        view.printMenu();
         Scanner scanner = new Scanner(System.in);
         String option = scanner.nextLine().toLowerCase(Locale.ROOT);
         if (Objects.equals(option, "new game")){
             play();
         }
         else if(Objects.equals(option, "high scores")){
-            View.printHighScores();
+            view.printHighScores();
             scanner.nextLine();
             menu();
         }
         else if(Objects.equals(option, "about")){
-            View.about();
+            view.about();
             scanner.nextLine();
             menu();
         }
         else if (Objects.equals(option, "exit")){
-            View.exit();
+            view.exit();
             System.exit(0);
         }
         else{
-            View.tryAgain();
+            view.tryAgain();
             menu();
         }
-    }
+    }*/
 
-    static void play(){
-        View.greetings();
-        MineField mineField = new MineField();
+    void play(int mode){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Choose field size");
+        int fieldSize = in.nextInt();
+        System.out.println("Choose mine count");
+        int mineCount = in.nextInt();
+
+        mineField = new MineField(fieldSize,mineCount);
         mineField.fillField();
-        View.printGameTextField(mineField);
-        while (true)
-            makeMove(mineField);
-    }
-
-    static void makeMove(MineField mineField) {
-        System.out.print("Write command:");
-        Scanner scanner = new Scanner(System.in);
-        String command = scanner.next();
-        if (command.equals("help")){
-            View.help();
-            String a = new Scanner(System.in).nextLine();
+        if (mode == 'g') {
+            view = new GuiView(mineField);
         }
-        else if (scanner.hasNextInt()){
-            if (command.equals("g")) {
-                String firstCoordinate = scanner.next();
-                if (scanner.hasNextInt()) {
-                    String secondCoordinate = scanner.next();
-                    Go(mineField, firstCoordinate, secondCoordinate);
-                }
-                else View.wrong();
-            } else if (command.equals("f")) {
-                String firstCoordinate = scanner.next();
-                if (scanner.hasNextInt()){
-                    String secondCoordinate = scanner.next();
-                    flag(mineField, firstCoordinate, secondCoordinate);
-                }
-                else View.wrong();
+        else if (mode == 't'){
+            view = new TextView(mineField);
+        }
+        String[] task = new String[3];
+        view.greetings();
+        view.updateGameTextField();
+        while (true) {
+            task = view.makeMove();
+            if (task[0] == "g"){
+                go(task[1],task[2]);
             }
-            else if(Character.isDigit(command.charAt(0))){
-                if (scanner.hasNextInt()) {
-                    String secondCoordinate = scanner.next();
-                    Go(mineField, command, secondCoordinate);
-                }
-                else View.wrong();
-            }
-            else{
-                View.wrong();
+            else if (task[0] == "f"){
+                flag(task[1],task[2]);
             }
         }
     }
 
-    static void flag(MineField mineField, String firstCoordinate, String secondCoordinate){
+
+
+    void flag(String secondCoordinate, String firstCoordinate){
         if (mineField.opened[Integer.parseInt(firstCoordinate)-1][Integer.parseInt(secondCoordinate)-1] == 0) {
             mineField.opened[Integer.parseInt(firstCoordinate)-1][Integer.parseInt(secondCoordinate)-1] = 2;
         }
         else if (mineField.opened[Integer.parseInt(firstCoordinate)-1][Integer.parseInt(secondCoordinate)-1] == 1){
-            View.wrong();
+            view.wrong();
         }
         else{
             mineField.opened[Integer.parseInt(firstCoordinate)-1][Integer.parseInt(secondCoordinate)-1] = 0;
         }
-        View.printGameTextField(mineField);
+        view.updateGameTextField();
     }
 
-    static void Go(MineField mineField, String firstCoordinate, String secondCoordinate) {
-        Scanner scanner = new Scanner(System.in);
+    void go(String secondCoordinate, String firstCoordinate) {
         PairInt coordinate = new PairInt(Integer.parseInt(firstCoordinate)-1, Integer.parseInt(secondCoordinate)-1);
-        if (coordinate.getSecond()<0 || coordinate.getSecond()>=mineField.size || coordinate.getFirst()<0 || coordinate.getFirst()>=mineField.size){
-            View.wrong();
+        if (coordinate.getSecond()<0 || coordinate.getSecond()>= mineField.getSize() || coordinate.getFirst()<0 || coordinate.getFirst()>= mineField.getSize()){
+            view.wrong();
             return;
         }
         mineField.opened[coordinate.getFirst()][coordinate.getSecond()] = 1;
         if (mineField.field[coordinate.getFirst()][coordinate.getSecond()] == '*') {
-            View.loss(mineField);
-            System.exit(0);
+            view.loss();
         } else if (mineField.field[coordinate.getFirst()][coordinate.getSecond()] == '0') {
             openNearby(mineField, coordinate);
         }
-        View.printGameTextField(mineField);
+        view.updateGameTextField();
         int flag = 0;
         for (int i = 0; i < mineField.getSize(); i++) {
             for (int j = 0; j < mineField.getSize(); j++) {
@@ -133,8 +124,7 @@ public class Controller {
             }
         }
         if (flag == mineField.mineCount){
-            View.victory(mineField);
-            System.exit(0);
+            view.victory();
         }
     }
 }
