@@ -6,6 +6,7 @@ import ru.nsu.ccfit.saburov.view.View;
 import ru.nsu.ccfit.saburov.view.gui.GuiView;
 import ru.nsu.ccfit.saburov.view.text.TextView;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -62,6 +63,10 @@ public class Controller {
         Scanner in = new Scanner(System.in);
         System.out.println("Choose field size");
         int fieldSize = in.nextInt();
+        if (fieldSize > 33){
+            System.out.println("Nope, try again.");
+            System.exit(0);
+        }
         System.out.println("Choose mine count");
         int mineCount = in.nextInt();
 
@@ -73,15 +78,15 @@ public class Controller {
         else if (mode == 't'){
             view = new TextView(mineField);
         }
-        String[] task = new String[3];
+        String[] task;
         view.greetings();
         view.updateGameTextField();
         while (true) {
             task = view.makeMove();
-            if (task[0] == "g"){
+            if (Objects.equals(task[0], "g")){
                 go(task[1],task[2]);
             }
-            else if (task[0] == "f"){
+            else if (Objects.equals(task[0], "f")){
                 flag(task[1],task[2]);
             }
         }

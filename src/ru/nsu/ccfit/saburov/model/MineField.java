@@ -66,7 +66,7 @@ public class MineField {
             mineLocationsList.add(mineCoordinates);
             count++;
         }
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < mineCount; i++) {
             field[mineLocationsList.get(i).getFirst()][mineLocationsList.get(i).getSecond()] = '*';
         }
         for (int i = 0; i < size; i++) {
